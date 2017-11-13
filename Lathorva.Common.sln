@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lathorva.Common", "Lathorva.Common\Lathorva.Common.csproj", "{AD6E4E53-820E-4F4E-8CD4-6B1BFC65FEF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lathorva.Common", "Lathorva.Common\Lathorva.Common.csproj", "{AD6E4E53-820E-4F4E-8CD4-6B1BFC65FEF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lathorva.Common.Repository.EntityFramework", "Lathorva.Common.Repository.EntityFramework\Lathorva.Common.Repository.EntityFramework.csproj", "{BDD92501-0A89-4267-B6E7-7403EE30343B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lathorva.Common.Web", "Lathorva.Common.Web\Lathorva.Common.Web.csproj", "{55DD276A-A0F4-4E91-81C0-A0ECC1D81CF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lathorva.Common.Repository.EntityFramework", "Lathorva.Common.Repository.EntityFramework\Lathorva.Common.Repository.EntityFramework.csproj", "{BDD92501-0A89-4267-B6E7-7403EE30343B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{BDD92501-0A89-4267-B6E7-7403EE30343B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDD92501-0A89-4267-B6E7-7403EE30343B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDD92501-0A89-4267-B6E7-7403EE30343B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55DD276A-A0F4-4E91-81C0-A0ECC1D81CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55DD276A-A0F4-4E91-81C0-A0ECC1D81CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55DD276A-A0F4-4E91-81C0-A0ECC1D81CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55DD276A-A0F4-4E91-81C0-A0ECC1D81CF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

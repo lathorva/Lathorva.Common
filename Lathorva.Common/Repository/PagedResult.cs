@@ -32,5 +32,7 @@ namespace Lathorva.Common.Repository
 
         public int Limit { get; }
         public int Offset { get; }
+
+        // TODO, Page, PageSize, TotalPages
     }
 }

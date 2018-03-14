@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Lathorva.Common.Repository.Filtering;
 
-namespace Lathorva.Common.Repository
+namespace Lathorva.Common.Repository.Models
 {
     public class PagedResult<TKey, TModel> where TKey : IConvertible where TModel : IEntity<TKey>
     {
-        public PagedResult(IEnumerable<TModel> data, int totalCount, ISearchModel searchModel)
+        public PagedResult(IEnumerable<TModel> data, int totalCount, IFilterModel filterModel)
         {
             Data = data;
             TotalCount = totalCount;
-            Limit = searchModel.Limit;
-            Offset = searchModel.Offset;
+
+            if(filterModel == null) throw new Exception("FilterModel is NULL, it is required");
+            Limit = filterModel.Limit;
+            Offset = filterModel.Offset;
         }
 
         /// <summary>

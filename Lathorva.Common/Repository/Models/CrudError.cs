@@ -1,4 +1,4 @@
-﻿namespace Lathorva.Common.Repository
+﻿namespace Lathorva.Common.Repository.Models
 {
     public class CrudError
     {

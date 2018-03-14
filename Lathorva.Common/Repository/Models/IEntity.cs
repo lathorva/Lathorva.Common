@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lathorva.Common.Repository
+namespace Lathorva.Common.Repository.Models
 {
     public interface IEntity<TKey>  where TKey : IConvertible
     {

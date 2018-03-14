@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Lathorva.Common.Repository.Models;
 
 namespace Lathorva.Common.Repository
 {

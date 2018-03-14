@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 
-namespace Lathorva.Common.Repository
+namespace Lathorva.Common.Repository.Models
 {
     public class CrudResult<TModel> : ICrudResult<int, TModel>  
         where TModel : class, IEntity

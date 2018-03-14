@@ -1,4 +1,6 @@
 ﻿using System;
+using Lathorva.Common.Repository.Filtering;
+using Lathorva.Common.Repository.Models;
 
 namespace Lathorva.Common.Repository
 {
@@ -12,13 +14,13 @@ namespace Lathorva.Common.Repository
     public interface IRepository<TModel, in TCreateModel, in TUpdateModel, in TSearchModel> : IRepository<int, TModel, TCreateModel, TUpdateModel, TSearchModel>,
         IDisposable
         where TModel : class, IEntity
-        where TSearchModel : ISearchModel
+        where TSearchModel : Filtering.IFilterModel
     {
     }
 
     public interface IRepository<TModel, in TSearchModel> : IRepository<TModel, TModel, TModel, TSearchModel>,
         IDisposable
         where TModel : class, IEntity
-        where TSearchModel : ISearchModel
+        where TSearchModel : Filtering.IFilterModel
     { }
 }

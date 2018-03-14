@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Lathorva.Common.Repository.Filtering
 {
-    public class Sorter
+    public interface ILimitOffset
     {
-        public string PropertyName { get; set; }
-        public SortDirection SortDirection { get; set; }
+        int Offset { get; set; }
+
+        int Limit { get; set; }
     }
 }

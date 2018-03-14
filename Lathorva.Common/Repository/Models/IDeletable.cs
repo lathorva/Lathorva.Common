@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lathorva.Common.Repository
+﻿namespace Lathorva.Common.Repository.Models
 {
     /// <summary>
     /// Marked as deleted by customer, but really not deleted, just deactivated.

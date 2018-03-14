@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 
-namespace Lathorva.Common.Repository
+namespace Lathorva.Common.Repository.Models
 {
     public interface ICrudResult<out TKey, out TModel> 
         where TModel : class, IEntity<TKey> 

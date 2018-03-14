@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lathorva.Common.Repository
+namespace Lathorva.Common.Repository.Models
 {
     /// <summary>
     /// For main entities, needs dates when created / edited last.

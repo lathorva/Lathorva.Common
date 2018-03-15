@@ -9,7 +9,7 @@ namespace Lathorva.Common.Utils.Encryption
     /// <summary>
     /// Most of code taken from https://stackoverflow.com/a/27484425
     /// </summary>
-    public class SimpleEncryptor
+    public class SimpleEncryptor : ISimpleEncryptor
     {
         public SimpleEncryptor(string encryptionKey)
         {

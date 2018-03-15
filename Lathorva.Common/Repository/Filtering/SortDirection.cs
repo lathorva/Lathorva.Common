@@ -1,4 +1,4 @@
-﻿namespace Lathorva.Common.Repository
+﻿namespace Lathorva.Common.Repository.Filtering
 {
     public enum SortDirection
     {

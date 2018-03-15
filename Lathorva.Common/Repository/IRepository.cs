@@ -1,4 +1,6 @@
 ﻿using System;
+using Lathorva.Common.Repository.Filtering;
+using Lathorva.Common.Repository.Models;
 
 namespace Lathorva.Common.Repository
 {
@@ -18,7 +20,7 @@ namespace Lathorva.Common.Repository
         IDisposable
         where TKey : IConvertible 
         where TModel : class, IEntity<TKey>
-        where TSearchModel : ISearchModel
+        where TSearchModel : Filtering.IFilterModel
     { }
 
     /// <summary>
@@ -31,6 +33,6 @@ namespace Lathorva.Common.Repository
         IDisposable
         where TKey : IConvertible
         where TModel : class, IEntity<TKey>
-        where TSearchModel : ISearchModel
+        where TSearchModel : Filtering.IFilterModel
     { }
 }

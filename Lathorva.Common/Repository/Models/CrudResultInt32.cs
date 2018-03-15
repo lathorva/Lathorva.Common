@@ -3,39 +3,39 @@ using System.Net;
 
 namespace Lathorva.Common.Repository.Models
 {
-    public class CrudResultInt32<TModel> : ICrudResult<int, TModel>  
+    public class CrudResult<TModel> : ICrudResult<int, TModel>  
         where TModel : class, IEntity
     {
-        private CrudResultInt32(TModel model, HttpStatusCode statusCode, IEnumerable<CrudError> errors)
+        private CrudResult(TModel model, HttpStatusCode statusCode, IEnumerable<CrudError> errors)
         {
             Model = model;
             StatusCode = statusCode;
             Errors = errors;
         }
 
-        public static CrudResultInt32<TModel> CreateOk(TModel model)
+        public static CrudResult<TModel> CreateOk(TModel model)
         {
-            return new CrudResultInt32<TModel>(model, HttpStatusCode.OK, null);
+            return new CrudResult<TModel>(model, HttpStatusCode.OK, null);
         }
 
-        public static CrudResultInt32<TModel> CreateOk()
+        public static CrudResult<TModel> CreateOk()
         {
-            return new CrudResultInt32<TModel>(default(TModel), HttpStatusCode.OK, null);
+            return new CrudResult<TModel>(default(TModel), HttpStatusCode.OK, null);
         }
 
-        public static CrudResultInt32<TModel> CreateCreated(TModel model)
+        public static CrudResult<TModel> CreateCreated(TModel model)
         {
-            return new CrudResultInt32<TModel>(model, HttpStatusCode.Created, null);
+            return new CrudResult<TModel>(model, HttpStatusCode.Created, null);
         }
 
-        public static CrudResultInt32<TModel> CreateBadRequest(IEnumerable<CrudError> errors)
+        public static CrudResult<TModel> CreateBadRequest(IEnumerable<CrudError> errors)
         {
-            return new CrudResultInt32<TModel>(default(TModel), HttpStatusCode.BadRequest, errors);
+            return new CrudResult<TModel>(default(TModel), HttpStatusCode.BadRequest, errors);
         }
 
-        public static CrudResultInt32<TModel> CreateConflict(IEnumerable<CrudError> errors)
+        public static CrudResult<TModel> CreateConflict(IEnumerable<CrudError> errors)
         {
-            return new CrudResultInt32<TModel>(default(TModel), HttpStatusCode.Conflict, errors);
+            return new CrudResult<TModel>(default(TModel), HttpStatusCode.Conflict, errors);
         }
 
         public TModel Model { get; }
@@ -45,14 +45,14 @@ namespace Lathorva.Common.Repository.Models
         public HttpStatusCode StatusCode { get; }
         public IEnumerable<CrudError> Errors { get; }
 
-        public static CrudResultInt32<TModel> CreateNotFound()
+        public static CrudResult<TModel> CreateNotFound()
         {
-            return new CrudResultInt32<TModel>(default(TModel), HttpStatusCode.NotFound, null);
+            return new CrudResult<TModel>(default(TModel), HttpStatusCode.NotFound, null);
         }
 
-        public static CrudResultInt32<TModel> CreateUnauthorized()
+        public static CrudResult<TModel> CreateUnauthorized()
         {
-            return new CrudResultInt32<TModel>(default(TModel), HttpStatusCode.Unauthorized, null);
+            return new CrudResult<TModel>(default(TModel), HttpStatusCode.Unauthorized, null);
         }
     }
 }

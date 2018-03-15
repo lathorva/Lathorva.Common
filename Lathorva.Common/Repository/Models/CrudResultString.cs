@@ -46,5 +46,15 @@ namespace Lathorva.Common.Repository.Models
         {
             return new CrudResultString<TModel>(default(TModel), HttpStatusCode.Conflict, errors);
         }
+
+        public static ICrudResult<string, TModel> CreateNotFound()
+        {
+            return new CrudResultString<TModel>(default(TModel), HttpStatusCode.NotFound, null);
+        }
+
+        public static ICrudResult<string, TModel> CreateUnauthorized()
+        {
+            return new CrudResultString<TModel>(default(TModel), HttpStatusCode.Unauthorized, null);
+        }
     }
 }

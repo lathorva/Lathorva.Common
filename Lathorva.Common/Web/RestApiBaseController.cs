@@ -24,15 +24,17 @@ namespace Lathorva.Common.Web
     /// Important! Include IOptions ApiDefaultPaging in startup.cs
     /// TODO, fix 401 statuscode instead of 302 redirect wi
     /// </summary>
+    /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TName"></typeparam>
     /// <typeparam name="TModel"></typeparam>
     /// <typeparam name="TRepository"></typeparam>
     /// <typeparam name="TFilter"></typeparam>
     [Produces("application/json")]
     [Authorize(AuthenticationSchemes = JwtDefaults.SchemeName + "," + OpenIdConnectDefaults.AuthenticationScheme + "," + CookieAuthenticationDefaults.AuthenticationScheme)]
-    public abstract class RestApiBaseController<TName, TModel, TFilter, TRepository> : Controller
-        where TModel : class, IEntity
-        where TRepository : IRepository<TModel, TFilter>
+    public abstract class RestApiBaseController<TKey, TName, TModel, TFilter, TRepository> : Controller
+        where TKey : IConvertible
+        where TModel : class, IEntity<TKey>
+        where TRepository : IRepository<TKey, TModel, TFilter>
         where TFilter : IFilterModel
     {
         public TRepository Repository { get; }
@@ -49,7 +51,7 @@ namespace Lathorva.Common.Web
 
         [HttpGet("{id}")]
         [ValidateModelState]
-        public virtual async Task<IActionResult> Get([FromRoute] int id)
+        public virtual async Task<IActionResult> Get([FromRoute] TKey id)
         {
             Logger.LogInformation($"Finding resource with id: {id}");
             var result = await new TaskAuditor<TModel>(() => Repository.GetByIdOrDefaultAsync(id), Logger, this).StartAsync();
@@ -68,7 +70,7 @@ namespace Lathorva.Common.Web
         {
             if (filterModel.Limit == 0) filterModel.Limit = AppDefaultPaging.Limit;
 
-            var result = await new TaskAuditor<PagedResult<int, TModel>>(() => Repository.GetAllAsync(filterModel), Logger, this).StartAsync();
+            var result = await new TaskAuditor<PagedResult<TKey, TModel>>(() => Repository.GetAllAsync(filterModel), Logger, this).StartAsync();
 
             return Ok(result);
         }
@@ -76,9 +78,9 @@ namespace Lathorva.Common.Web
         [HttpPut("{id}")]
         [CheckModelForNull]
         [ValidateModelState]
-        public virtual async Task<IActionResult> Put([FromRoute] int id, [FromBody] TModel model)
+        public virtual async Task<IActionResult> Put([FromRoute] TKey id, [FromBody] TModel model)
         {
-            var result = await new TaskAuditor<ICrudResult<int, TModel>>(() => Repository.UpdateAsync(id, model), Logger, this).StartAsync();
+            var result = await new TaskAuditor<ICrudResult<TKey, TModel>>(() => Repository.UpdateAsync(id, model), Logger, this).StartAsync();
 
             return WebUtils.CreateActionResult(result);
         }
@@ -88,21 +90,25 @@ namespace Lathorva.Common.Web
         [ValidateModelState]
         public virtual async Task<IActionResult> Post([FromBody] TModel model)
         {
-            var result = await new TaskAuditor<ICrudResult<int, TModel>>(() => Repository.CreateAsync(model), Logger, this).StartAsync();
+            var result = await new TaskAuditor<ICrudResult<TKey, TModel>>(() => Repository.CreateAsync(model), Logger, this).StartAsync();
 
             return WebUtils.CreateActionResult(result);
         }
 
         [HttpDelete]
         [ValidateModelState]
-        public virtual async Task<IActionResult> Delete([FromRoute] int id)
+        public virtual async Task<IActionResult> Delete([FromRoute] TKey id)
         {
-            var result = await new TaskAuditor<ICrudResult<int, TModel>>(() => Repository.DeleteAsync(id), Logger, this).StartAsync();
+            var result = await new TaskAuditor<ICrudResult<TKey, TModel>>(() => Repository.DeleteAsync(id), Logger, this).StartAsync();
 
             return WebUtils.CreateActionResult(result);
         }
     }
 
+    /// <summary>
+    /// Logs function time usage.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class TaskAuditor<T>
     {
         private readonly Func<Task<T>> _func;

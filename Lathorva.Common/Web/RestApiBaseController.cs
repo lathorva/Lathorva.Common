@@ -30,7 +30,7 @@ namespace Lathorva.Common.Web
     /// <typeparam name="TRepository"></typeparam>
     /// <typeparam name="TFilter"></typeparam>
     [Produces("application/json")]
-    [Authorize(AuthenticationSchemes = JwtDefaults.SchemeName + "," + OpenIdConnectDefaults.AuthenticationScheme + "," + CookieAuthenticationDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtDefaults.SchemeName + "," + OpenIdConnectDefaults.AuthenticationScheme + "," + CookieAuthenticationDefaults.AuthenticationScheme)]
     public abstract class RestApiBaseController<TKey, TName, TModel, TFilter, TRepository> : Controller
         where TKey : IConvertible
         where TModel : class, IEntity<TKey>
